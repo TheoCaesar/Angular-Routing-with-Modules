@@ -15,6 +15,7 @@ import { Route, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app.routing.module';
 import { AuthGuard } from './auth-guard.service';
+import { CanDeactivateGuard } from './servers/edit-server/can-deactivate.guard.service';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { AuthGuard } from './auth-guard.service';
     BrowserModule,
     FormsModule,
   ],
-  providers: [ServersService, AuthGuard], //auth service follows alt path
+  providers: [ServersService, AuthGuard, CanDeactivateGuard], //auth service follows alt path
   bootstrap: [AppComponent]
 })
 export class AppModule { }

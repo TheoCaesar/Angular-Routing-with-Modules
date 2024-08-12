@@ -11,6 +11,7 @@ import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from "./auth-guard.service";
+import { CanDeactivateGuard } from "./servers/edit-server/can-deactivate.guard.service";
 
 const routes: Route[] = [
     {
@@ -34,8 +35,15 @@ const routes: Route[] = [
         // canActivate: [AuthGuard],
         canActivateChild: [AuthGuard],
         children:[
-            {path: ":id", component:ServerComponent},
-            {path: ":id/edit", component:EditServerComponent},
+            {
+                path: ":id", 
+                component:ServerComponent
+            },
+            {
+                path: ":id/edit", 
+                component:EditServerComponent, 
+                canDeactivate: [CanDeactivateGuard]
+            },
         ]
     },
     {
