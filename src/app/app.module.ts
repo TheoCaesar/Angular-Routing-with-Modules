@@ -12,9 +12,11 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { Route, RouterModule } from '@angular/router';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Route[] = [
-  {path: "", component:HomeComponent},
+  {path: "", redirectTo: "/dashboard", pathMatch: 'full'}, //abs path
+  {path: "dashboard", component:HomeComponent},
   {path: "user", component:UsersComponent, children: [
     {path: ":id/:name", component:UserComponent},
   ]},
@@ -22,6 +24,7 @@ const routes: Route[] = [
     {path: ":id", component:ServerComponent},
     {path: ":id/edit", component:EditServerComponent},
   ]},
+  {path:'**', component: NotFoundComponent} //wild card should be list in list
 ]
 
 @NgModule({
@@ -32,7 +35,8 @@ const routes: Route[] = [
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    NotFoundComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
