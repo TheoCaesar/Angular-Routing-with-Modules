@@ -16,10 +16,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app.routing.module';
 import { AuthGuard } from './auth-guard.service';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactivate.guard.service';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
   declarations: [
+    ErrorComponent,
     AppComponent,
     HomeComponent,
     UsersComponent,
@@ -27,7 +29,7 @@ import { CanDeactivateGuard } from './servers/edit-server/can-deactivate.guard.s
     UserComponent,
     EditServerComponent,
     ServerComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     // RouterModule.forRoot(routes),

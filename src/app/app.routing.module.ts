@@ -12,6 +12,7 @@ import { ServersService } from './servers/servers.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from "./auth-guard.service";
 import { CanDeactivateGuard } from "./servers/edit-server/can-deactivate.guard.service";
+import { ErrorComponent } from "./error/error.component";
 
 const routes: Route[] = [
     {
@@ -45,6 +46,13 @@ const routes: Route[] = [
                 canDeactivate: [CanDeactivateGuard]
             },
         ]
+    },
+    {
+        path: 'error',
+        component: ErrorComponent,
+        data: {
+            errorMessage: '503 - Service Unavailable'
+        }
     },
     {
         path:'**',          //wild card should be last in list
