@@ -26,6 +26,9 @@ export class ServerComponent implements OnInit {
 
   onEdit(){
     // this.router.navigate(['/servers', this.serverId, 'edit']) //set up route (url) manually
-    this.router.navigate(['edit'], {relativeTo: this.actRoute}) //set up relative route
+    this.router.navigate(['edit'], {
+      relativeTo: this.actRoute,
+      queryParamsHandling: 'preserve'
+    }) //set up relative route
   }
 }
