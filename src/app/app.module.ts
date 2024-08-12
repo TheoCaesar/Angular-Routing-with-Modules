@@ -13,19 +13,8 @@ import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { Route, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AppRoutingModule } from './app.routing.module';
 
-const routes: Route[] = [
-  {path: "", redirectTo: "/dashboard", pathMatch: 'full'}, //abs path
-  {path: "dashboard", component:HomeComponent},
-  {path: "user", component:UsersComponent, children: [
-    {path: ":id/:name", component:UserComponent},
-  ]},
-  {path: "servers", component:ServersComponent, children:[
-    {path: ":id", component:ServerComponent},
-    {path: ":id/edit", component:EditServerComponent},
-  ]},
-  {path:'**', component: NotFoundComponent} //wild card should be list in list
-]
 
 @NgModule({
   declarations: [
@@ -39,7 +28,8 @@ const routes: Route[] = [
     NotFoundComponent
   ],
   imports: [
-    RouterModule.forRoot(routes),
+    // RouterModule.forRoot(routes),
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
   ],
