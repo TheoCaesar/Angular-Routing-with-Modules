@@ -12,18 +12,16 @@ export class EditServerComponent implements OnInit {
   server: {id: number, name: string, status: string};
   serverName = '';
   serverStatus = '';
+  allowEdit = false;
 
   constructor(private serversService: ServersService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    console.log('fragment', this.route.snapshot.fragment)
-    console.log('queryParams', this.route.snapshot.queryParams)
-
-    //subscr alternatives
-    this.route.queryParams.subscribe();
-    this.route.fragment.subscribe();
+    this.route.queryParams.subscribe((queryParams)=>
+      console.log('queryParams', queryParams));
+      //  this.allowEdit = queryParams.allowEdit == '1' ? true : false);
     this.server = this.serversService.getServer(1);
     this.serverName = this.server.name;
     this.serverStatus = this.server.status;
