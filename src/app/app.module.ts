@@ -15,11 +15,13 @@ import { Route, RouterModule } from '@angular/router';
 
 const routes: Route[] = [
   {path: "", component:HomeComponent},
-  {path: "user", component:UsersComponent},
-  {path: "user/:id/:name", component:UserComponent},
-  {path: "servers", component:ServersComponent},
-  {path: "servers/:id", component:ServerComponent},
-  {path: "servers/:id/edit", component:EditServerComponent},
+  {path: "user", component:UsersComponent, children: [
+    {path: ":id/:name", component:UserComponent},
+  ]},
+  {path: "servers", component:ServersComponent, children:[
+    {path: ":id", component:ServerComponent},
+    {path: ":id/edit", component:EditServerComponent},
+  ]},
 ]
 
 @NgModule({
