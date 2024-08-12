@@ -9,13 +9,11 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   constructor() { }
   router = inject(Router);
-  checkPayload() {
-    //perform some calcs
-    setTimeout(() => {
-      window.alert("redirecting to servers; Click OK")
-      // this.router.navigate(['servers']) //relative path
-      this.router.navigate(['/servers']) //absolute path
-    }, 3000);
+  checkPayload(id: number) {
+    this.router.navigate(['/servers', id, 'edit'], {
+      queryParams: {allowEdit: id},
+      fragment: 'loading'
+    })
   }
 
   ngOnInit() {
