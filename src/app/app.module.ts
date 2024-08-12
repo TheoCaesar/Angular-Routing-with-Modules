@@ -14,6 +14,7 @@ import { ServersService } from './servers/servers.service';
 import { Route, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app.routing.module';
+import { AuthGuard } from './auth-guard.service';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { AppRoutingModule } from './app.routing.module';
     BrowserModule,
     FormsModule,
   ],
-  providers: [ServersService],
+  providers: [ServersService, AuthGuard], //auth service follows alt path
   bootstrap: [AppComponent]
 })
 export class AppModule { }
