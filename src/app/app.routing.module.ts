@@ -13,6 +13,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from "./auth-guard.service";
 import { CanDeactivateGuard } from "./servers/edit-server/can-deactivate.guard.service";
 import { ErrorComponent } from "./error/error.component";
+import { ServerResolver } from "./servers/server/server.resolver.service";
 
 const routes: Route[] = [
     {
@@ -38,7 +39,10 @@ const routes: Route[] = [
         children:[
             {
                 path: ":id", 
-                component:ServerComponent
+                component:ServerComponent,
+                resolve: {
+                    serverObj: ServerResolver
+                }
             },
             {
                 path: ":id/edit", 

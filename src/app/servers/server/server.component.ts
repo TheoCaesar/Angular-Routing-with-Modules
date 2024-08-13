@@ -17,11 +17,11 @@ export class ServerComponent implements OnInit {
   constructor(private serversService: ServersService) { }
 
   ngOnInit() {
-    // this.server = this.serversService.getServer(1);
-    const subscr = this.actRoute.params.subscribe((response: Params)=> {
-      this.serverId = +response.id //precede with + to convert to int
-      this.server = this.serversService.getServer(this.serverId);
-    });  
+    this.actRoute.data.subscribe((response)=> this.server = response.serverObj)
+    // const subscr = this.actRoute.params.subscribe((response: Params)=> {
+    //   this.serverId = +response.id //precede with + to convert to int
+    //   this.server = this.serversService.getServer(this.serverId);
+    // });  
   }
 
   onEdit(){
